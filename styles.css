@@ -19,6 +19,15 @@
         .grid {
             overflow-x: auto;
         }
+
+        .signature{
+            margin-right: 5vw;
+            margin-top: 3vh;
+        }
+        
+        .balance {
+            margin-top:3vh;
+        }
     
         /* Hide buttons during printing */
         @media print {
@@ -69,11 +78,7 @@
             .justify-between {
                 justify-content: space-between;
             }
-    
-            /* Hide signature label during printing */
-            .signature-label {
-                display: none;
-            }
+
             .farmer-name{
                 font-size: 2rem;
             }
@@ -83,6 +88,15 @@
             .mulla-dairy{
                 font-size: 5rem;
             }
+            .second-row{
+                margin-top:4px;
+            }
+
+            .signature{
+                margin-right: 7vw;
+                margin-top: 4vh;
+            }
+            
         }
 
         .loader {
