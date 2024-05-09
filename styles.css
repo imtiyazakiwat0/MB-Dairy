@@ -1,0 +1,99 @@
+        /* Limit the maximum width of specific table columns */
+        .table th:nth-child(2),
+        .table th:nth-child(3),
+        .table th:nth-child(4),
+        .table td:nth-child(2),
+        .table td:nth-child(3),
+        .table td:nth-child(4) {
+            max-width: 100px; /* Adjust the maximum width as needed */
+            text-align: center; /* Center-align text in these cells */
+        }
+        
+        /* Additional CSS for inputs */
+        .input {
+            text-align: center; /* Center-align text in input fields */
+            max-width: 100px; 
+        }
+    
+        /* Add overflow-x: auto; to the container of the tables */
+        .grid {
+            overflow-x: auto;
+        }
+    
+        /* Hide buttons during printing */
+        @media print {
+            .no-print {
+                visibility: hidden;
+                /* display: none; */
+            }
+        }
+    
+        /* Adjust layout for printing */
+        @media print {
+            /* Ensure content fits on a single A4 page */
+            body {
+                margin: 0;
+                padding: 0;
+                size: A4;
+            }
+            
+            /* Increase font size for better readability when printed */
+            .font-double {
+                font-size: 1rem;
+            }
+    
+            /* Adjust spacing for better layout */
+            .mt-8 {
+                margin-top: 0.2rem;
+            }
+    
+            .mb-4 {
+                margin-bottom: 0.1rem;
+            }
+    
+            .mt-4 {
+                margin-top: 0.1rem;
+            }
+    
+            .divider {
+                margin: 0.51rem 0;
+                border-top: 1px solid #ccc;
+            }
+    
+            /* Adjust alignment */
+            .flex {
+                display: flex;
+                justify-content: space-between;
+            }
+    
+            .justify-between {
+                justify-content: space-between;
+            }
+    
+            /* Hide signature label during printing */
+            .signature-label {
+                display: none;
+            }
+        }
+
+        .loader {
+    border: 8px solid #f3f3f3;
+    border-top: 8px solid #3498db;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+    display: none; /* Initially hidden */
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+    

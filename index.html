@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mulla Dairy</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <!-- Add the Firebase JavaScript SDK -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    <link rel="stylesheet" href="styles.css">
+    
+    
+</head>
+
+<body class="bg-gray-100">
+    <div class="container mx-auto">
+        <h1 class="text-5xl text-blue-500 font-pacifico text-center my-8">Mulla Dairy</strong>
+        </h1>
+        <div class="bg-white shadow-md rounded p-8">
+            <div class="flex items-center mb-4">
+                <label for="billDate" class="mr-2">Bill Date:</label>
+                <input type="date" id="billDate" class="border border-gray-300 rounded px-4 py-2">
+            </div>
+            <div class="flex items-center mb-4">
+                <label for="farmerName" class="mr-2">Farmer Name:</label>
+                <input type="text" id="farmerName" placeholder="Enter farmer name"
+                    class="border border-gray-300 rounded px-4 py-2 w-full">
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div>
+                    <h2 class="text-xl font-bold mb-4">Morning</h2>
+                    <div class="overflow-x-auto">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Litres</th>
+                                    <th>Fat</th>
+                                    <th>SNF</th>
+                                    <th>Total Amount</th>
+                                </tr>
+                            </thead>
+                            <tbody id="morningTableBody">
+                                <!-- Morning table rows will be added dynamically -->
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <td>Total</td>
+                                    <td id="morningTotalLitres">-</td>
+                                    <td colspan="3" id="morningTotalAmount">-</td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+                <div>
+                    <h2 class="text-xl font-bold mb-4">Evening</h2>
+                    <div class="overflow-x-auto">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Litres</th>
+                                    <th>Fat</th>
+                                    <th>SNF</th>
+                                    <th>Total Amount</th>
+                                </tr>
+                            </thead>
+                            <tbody id="eveningTableBody">
+                                <!-- Evening table rows will be added dynamically -->
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <td>Total</td>
+                                    <td id="eveningTotalLitres">-</td>
+                                    <td colspan="3" id="eveningTotalAmount">-</td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            
+            
+            <div class="mt-8">
+                <div class="flex justify-between mb-4">
+                    <!-- Total Litres -->
+                    <div>
+                        <span class="font-bold">Total Litres:</span>
+                        <span id="totalLitres">-</span>
+                    </div>
+                        <div>
+                        <span class="font-bold">Total Amount:</span>
+                        <span id="totalAmount">-</span>
+                    </div>
+                   
+                </div>
+                
+                <!-- Balance input -->
+                <div class="mb-4">
+                    <label for="balance" class="font-bold">Balance:</label>
+                    <input type="number" id="balance" placeholder="Balance"
+                        class="border border-gray-300 rounded px-4 py-2 ml-2">
+                </div>
+                
+                <!-- Signature -->
+                <div class="mb-4">
+                    <span class="font-bold signature-label">Signature:</span>
+                    <span id="signature">  </span>
+                </div>
+                
+                <!-- Divider -->
+                <div class="divider"></div>
+                
+                <!-- Owner Name -->
+                <div class="flex justify-between mt-4">
+                    <div>
+                        <span class="font-bold">Owner Name:</span>
+                        <span>Nabisab Mulla</span>
+                    </div>
+                    <div>
+                        <span class="font-bold">Mobile Number:</span>
+                        <span>8217291743</span>
+                    </div>
+                </div>
+            </div>
+                </div>
+                <div class="flex justify-center mt-8 no-print">
+                    <button onclick="saveData()" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded">
+                        Save
+                    </button>
+                    <button onclick="fetchSavedData()" class="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded ml-4 mr-4">
+                        History
+                    </button>
+                    <button onclick="window.print()" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded mr-4">
+                        Print
+                    </button>
+                    <!-- Clear button -->
+                    <button onclick="clearData()" class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded mr-4">
+                        Clear
+                    </button>
+                    <div id="loader" class="loader"></div>
+                </div>
+                
+                
+            </div>
+
+   <script src="scipt.js"></script>
+
+</body>
+
+</html>
