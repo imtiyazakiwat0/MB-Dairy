@@ -1,117 +1,109 @@
-        /* Limit the maximum width of specific table columns */
-        .table th:nth-child(2),
-        .table th:nth-child(3),
-        .table th:nth-child(4),
-        .table td:nth-child(2),
-        .table td:nth-child(3),
-        .table td:nth-child(4) {
-            max-width: 100px; /* Adjust the maximum width as needed */
-            text-align: center; /* Center-align text in these cells */
-        }
-        
-        /* Additional CSS for inputs */
-        .input {
-            text-align: center; /* Center-align text in input fields */
-            max-width: 100px; 
-        }
-    
-        /* Add overflow-x: auto; to the container of the tables */
-        .grid {
-            overflow-x: auto;
-        }
+/* Existing styles for on-screen presentation */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
 
-        .signature{
-            margin-right: 5vw;
-            margin-top: 3vh;
-        }
-        
-        .balance {
-            margin-top:3vh;
-        }
-    
-        /* Hide buttons during printing */
-        @media print {
-            .no-print {
-                visibility: hidden;
-                /* display: none; */
-            }
-        }
-    
-        /* Adjust layout for printing */
-        @media print {
-            /* Ensure content fits on a single A4 page */
-            body {
-                margin: 0;
-                padding: 0;
-                size: A4;
-            }
-            
-            /* Increase font size for better readability when printed */
-            .font-double {
-                font-size: 1rem;
-            }
-    
-            /* Adjust spacing for better layout */
-            .mt-8 {
-                margin-top: 0.2rem;
-            }
-    
-            .mb-4 {
-                margin-bottom: 0.1rem;
-            }
-    
-            .mt-4 {
-                margin-top: 0.1rem;
-            }
-    
-            .divider {
-                margin: 0.51rem 0;
-                border-top: 1px solid #ccc;
-            }
-    
-            /* Adjust alignment */
-            .flex {
-                display: flex;
-                justify-content: space-between;
-            }
-    
-            .justify-between {
-                justify-content: space-between;
-            }
+input[type="number"] {
+    -moz-appearance: textfield;
+}
 
-            .farmer-name{
-                font-size: 2rem;
-            }
-            .bill-date{
-                font-size: 1.5rem;
-            }
-            .mulla-dairy{
-                font-size: 5rem;
-            }
-            .second-row{
-                margin-top:4px;
-            }
+.mulla-dairy {
+    font-size: 3rem;
+    font-family: 'Pacifico', cursive;
+    color: #2b6cb0;
+}
 
-            .signature{
-                margin-right: 7vw;
-                margin-top: 4vh;
-            }
-            
-        }
+.container {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
 
-        .loader {
-    border: 8px solid #f3f3f3;
-    border-top: 8px solid #3498db;
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
-    animation: spin 1s linear infinite;
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.table th,
+.table td {
+    border: 1px solid #e2e8f0;
+    padding: 12px;
+    text-align: center;
+}
+
+.table th {
+    background-color: #edf2f7;
+    font-weight: bold;
+    color: #2d3748;
+}
+
+.table td {
+    background-color: #f9fafb;
+}
+
+.input {
+    width: 100%;
+    border: 1px solid #e2e8f0;
+    text-align: center;
+    background-color: #fff;
+    padding: 8px;
+    border-radius: 4px;
+    transition: background-color 0.2s, border-color 0.2s;
+}
+
+.input:focus {
+    background-color: #e2e8f0;
+    border-color: #3182ce;
+    outline: none;
+}
+
+.signature {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 32px;
+    text-align: center;
+}
+
+.signature-label {
+    display: block;
+    margin-bottom: 32px;
+    border-top: 1px solid #e2e8f0;
+    width: 100%;
+    padding-top: 4px;
+    color: #718096;
+}
+
+.loader, .spinner {
+    display: none;
     position: fixed;
-    top: 50%;
+    z-index: 1000;
     left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 9999;
-    display: none; /* Initially hidden */
+    top: 50%;
+    width: 40px;
+    height: 40px;
+    margin: -20px 0 0 -20px;
+    border: 4px solid rgba(255, 255, 255, 0.3);
+    border-top: 4px solid #3498db;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+.spinner-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.8);
+    z-index: 999;
+    backdrop-filter: blur(5px);
 }
 
 @keyframes spin {
@@ -119,4 +111,83 @@
     100% { transform: rotate(360deg); }
 }
 
+@media (max-width: 768px) {
+    .grid {
+        display: block;
+    }
+
+    .signature-label {
+        margin-bottom: 16px;
+    }
+}
+
+/* Print-specific styles */
+@media print {
+    body {
+        width: 210mm;
+        height: 297mm;
+        margin: 0 auto;
+        font-size: 10px; /* Reduced font size */
+    }
+
+    .billdate {
+        font-size: 2rem;   
+    }
+
+    .farmername {
+        font-size: 3rem;
+    }
     
+    .mulla-dairy {
+        font-size: 4rem;
+    }
+
+    .no-print {
+        display: none;
+    }
+
+    .container {
+        margin: 0;
+        padding: 0;
+    }
+
+    .table {
+        font-size: 8px; /* Reduced font size */
+    }
+
+    .table th, .table td {
+        padding: 4px; /* Reduced padding */
+    }
+
+    .signature-label {
+        margin-bottom: 16px; /* Reduced margin */
+    }
+
+    .bill-date,
+    .farmer-name,
+    .second-row,
+    .balance,
+    .signature {
+        margin: 0;
+        padding: 0;
+    }
+
+    .bill-date label,
+    .farmer-name label,
+    .second-row label,
+    .balance label,
+    .signature label {
+        font-size: 10px; /* Reduced font size */
+    }
+
+    .container,
+    .table th,
+    .table td,
+    .input,
+    .bill-date input,
+    .farmer-name input,
+    .second-row input,
+    .balance input {
+        box-sizing: border-box;
+    }
+}

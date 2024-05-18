@@ -41,9 +41,8 @@ function generatePreviousDates() {
 
         currentDate.setDate(currentDate.getDate() + 1);
     }
-
-    calculateTotals();
 }
+
 
 function calculateAmount(tableType, element) {
     const row = element.parentElement.parentElement;

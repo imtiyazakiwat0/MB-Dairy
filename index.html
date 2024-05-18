@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,28 +10,24 @@
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
     <script src="firebase-config.js"></script>
     <link rel="stylesheet" href="styles.css">
-
-
 </head>
-
-<body class="bg-gray-100">
-    <div class="container mx-auto">
-        <h1 class="text-5xl text-blue-500 font-pacifico text-center my-8 mulla-dairy">Mulla Dairy</strong>
-        </h1>
-        <div class="bg-white shadow-md rounded p-8">
-            <div class="flex items-center mb-4">
-                <label for="billDate" class="mr-2 bill-date">Bill Date:</label>
-                <input type="date" id="billDate" class="border border-gray-300 rounded px-4 py-2 mr-auto bill-date">
+<body class="bg-gray-50">
+    <div class="spinner-overlay"></div>
+    <div class="loader spinner"></div>
+    <div class="container mx-auto p-4">
+        <h1 class="text-4xl text-blue-500 font-pacifico text-center my-4 mulla-dairy">Mulla Dairy</h1>
+        <div class="bg-white shadow-md rounded p-4">
+            <div class="flex items-center mb-2 bill-date">
+                <label for="billDate" class="mr-2">Bill Date:</label>
+                <input type="date" id="billDate" class="billdate border border-gray-300 rounded px-2 py-1 mr-auto focus:outline-none focus:ring-2 focus:ring-blue-500">
             </div>
-
-            <div class="flex items-center mb-4">
-                <label for="farmerName" class="mr-2 ">Farmer Name:</label>
-                <input type="text" id="farmerName" placeholder="Enter farmer name"
-                    class="border border-gray-300 rounded px-4 py-2 w-full farmer-name">
+            <div class="flex items-center mb-2 farmer-name">
+                <label for="farmerName" class="mr-2">Farmer Name:</label>
+                <input type="text" id="farmerName" placeholder="Enter farmer name" class="farmername border border-gray-300 rounded px-2 py-1 w-full focus:outline-none focus:ring-2 focus:ring-blue-500">
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
-                    <h2 class="text-xl font-bold mb-4">Morning</h2>
+                    <h2 class="text-lg font-bold mb-2">Morning</h2>
                     <div class="overflow-x-auto">
                         <table class="table">
                             <thead>
@@ -58,7 +53,7 @@
                     </div>
                 </div>
                 <div>
-                    <h2 class="text-xl font-bold mb-4">Evening</h2>
+                    <h2 class="text-lg font-bold mb-2">Evening</h2>
                     <div class="overflow-x-auto">
                         <table class="table">
                             <thead>
@@ -84,10 +79,8 @@
                     </div>
                 </div>
             </div>
-
-            <div class="mt-8">
-                <div class="flex justify-between mb-4">
-                    <!-- Total Litres -->
+            <div class="mt-4">
+                <div class="flex justify-between mb-2">
                     <div>
                         <span class="font-bold">Total Litres:</span>
                         <span id="totalLitres">-</span>
@@ -97,25 +90,18 @@
                         <span id="totalAmount">-</span>
                     </div>
                 </div>
-
-                <div class="flex justify-between mb-4 second-row">
-                <!-- Balance input -->
-                <div class="mb-4 balance">
-                    <label for="balance" class="font-bold">Balance:</label>
-                    <input type="number" id="balance" placeholder="Balance"
-                        class="border border-gray-300 rounded px-4 py-2 ml-2">
+                <div class="flex justify-between mb-2 second-row">
+                    <div class="balance">
+                        <label for="balance" class="font-bold">Balance:</label>
+                        <input type="number" id="balance" placeholder="Balance" class="border border-gray-300 rounded px-2 py-1 ml-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    </div>
+                    <div class="signature">
+                        <span class="font-bold signature-label">Signature:</span>
+                        <span id="signature"></span>
+                    </div>
                 </div>
-                <!-- Signature -->
-                <div class="mb-4 signature">
-                    <span class="font-bold signature-label">Signature:</span>
-                    <span id="signature">  </span>
-                </div>
-            </div>
-                <!-- Divider -->
                 <div class="divider"></div>
-
-                <!-- Owner Name -->
-                <div class="flex justify-between mt-4">
+                <div class="flex justify-between mt-2">
                     <div>
                         <span class="font-bold">Owner Name:</span>
                         <span>Nabisab Mulla</span>
@@ -125,33 +111,16 @@
                         <span>7259610916</span>
                     </div>
                 </div>
-
-                
             </div>
-
         </div>
-        <div class="flex justify-center mt-8 no-print">
-            <button onclick="saveData()" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded">
-                Save
-            </button>
-            <button onclick="fetchSavedData()" class="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded ml-4 mr-4">
-                History
-            </button>
-            <button onclick="window.print()" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded mr-4">
-                Print
-            </button>
-            <!-- Clear button -->
-            <button onclick="clearData()" class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded mr-4">
-                Clear
-            </button>
+        <div class="flex justify-center mt-4 no-print">
+            <button onclick="saveData()" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-green-500">Save</button>
+            <button onclick="fetchSavedData()" class="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded ml-2 mr-2 focus:outline-none focus:ring-2 focus:ring-yellow-500">History</button>
+            <button onclick="window.print()" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded mr-2 focus:outline-none focus:ring-2 focus:ring-blue-500">Print</button>
+            <button onclick="clearData()" class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded mr-2 focus:outline-none focus:ring-2 focus:ring-red-500">Clear</button>
             <div id="loader" class="loader"></div>
         </div>
-
-
     </div>
-
     <script src="scipt.js"></script>
-
 </body>
-
 </html>
